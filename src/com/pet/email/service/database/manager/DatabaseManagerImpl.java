@@ -48,4 +48,19 @@ public class DatabaseManagerImpl extends BaseManager implements DatabaseManager 
 		return databaseVO;
 	}
 
+	@Override
+	public DatabaseVO deleteDatabase(DatabaseVO databaseVO) {
+		long[] ids = databaseVO.getIds();
+		if(ids != null && ids.length > 0) {
+			try {
+				boolean isSuccess = databaseDao.deleteDatabase(ids);
+				databaseVO.setSuccess(isSuccess);
+			} catch (MainAppException e) {
+				databaseVO.setSuccess(false);
+				databaseVO.setFailedMsg(e.getMessage());
+			}
+		}
+		return databaseVO;
+	}
+
 }

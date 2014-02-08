@@ -76,4 +76,32 @@ public class DatabaseDaoImpl extends BaseDao implements DatabaseDao {
 		return isSuccess;
 	}
 
+	@Override
+	public boolean deleteDatabase(long[] ids) throws MainAppException {
+		StringBuilder sb = new StringBuilder();
+		sb.append("delete from contact_databases a where a.id in(");
+		for(int i = 0; i < ids.length; i++) {
+			if(i > 0) 
+				sb.append(", ");
+			sb.append(ids[i]);
+		}
+		sb.append(")");
+		
+		String sqlStr = sb.toString();
+		boolean isSuccess = true;
+		Connection conn = null;
+		PreparedStatement ps = null;
+		try {
+			conn = getConnection();
+			ps = conn.prepareStatement(sqlStr);
+			ps.execute();
+			isSuccess = true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DbUtil.close(ps, conn);
+		}
+		return isSuccess;
+	}
+
 }

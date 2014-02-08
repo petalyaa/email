@@ -1,13 +1,14 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:useBean id="WebConstants" class="com.pet.email.web.util.WebConstants" scope="request"/>
 <div class="row">
 	<div class="pull-right">
 		<button class="btn btn-primary" type="button" id="database-new-btn">New</button>
 		<button class="btn btn-primary" type="button">Import</button>
-		<button class="btn btn-danger" type="button">Delete</button>
+		<button class="btn btn-danger" type="button" id="database-del-btn">Delete</button>
 	</div>
 	<span class="clearfix"></span>
 	<hr />
-	<table class="table table-bordered table-striped">
+	<table class="table table-bordered table-striped" id="database-table">
 		<thead>
 			<tr>
 				<th width="10px"><input type="checkbox" name="check_all" value="1" /></th>
@@ -21,16 +22,6 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<th><input type="checkbox" name="check_all" value="1" /></th>
-				<td>1</td>
-				<td><a>Test</a></td>
-				<td>Test</td>
-				<td>Yesterday</td>
-				<td>Active</td>
-				<td>Subscription</td>
-				<td>1231</td>
-			</tr>
 		</tbody>
 	</table>
 	<div class="pull-right">
@@ -72,7 +63,7 @@
     					<div class="col-sm-10">
       						<div class="btn-group" data-toggle="buttons">
   								<label class="btn btn-default">
-    								<input type="radio" checked="checked" name="database-type" value="${WebConstants.DATABASE_TYPE_SUBSCRIBE}"> Subscription
+    								<input type="radio" name="database-type" value="${WebConstants.DATABASE_TYPE_SUBSCRIBE}"> Subscription
   								</label>
   								<label class="btn btn-default">
     								<input type="radio" name="database-type" value="${WebConstants.DATABASE_TYPE_UNSUBSCRIBE}"> Unsubscribe

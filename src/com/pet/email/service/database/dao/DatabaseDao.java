@@ -11,4 +11,6 @@ public interface DatabaseDao {
 	
 	public boolean saveDatabase(Database database) throws MainAppException;
 	
+	public boolean deleteDatabase(long[] ids) throws MainAppException;
+	
 }

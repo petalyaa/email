@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.pet.email.generic.dao.DaoFactory;
+import com.pet.email.generic.util.CommonUtil;
 import com.pet.email.generic.util.ServletContextUtil;
 import com.pet.email.generic.util.WebCommonUtil;
 import com.pet.email.web.util.WebConstants;
@@ -48,5 +49,10 @@ public abstract class BaseController extends HttpServlet {
 	protected DaoFactory getDaoFactory() {
 		ServletContext context = getServletContext();
 		return ServletContextUtil.getDaoFactory(context);
+	}
+	
+	protected long[] getLongArrayParameter(HttpServletRequest request, String paramName) {
+		String paramStr = getStringParameter(request, paramName);
+		return CommonUtil.toLongArray(paramStr.split("\\,"));
 	}
 }

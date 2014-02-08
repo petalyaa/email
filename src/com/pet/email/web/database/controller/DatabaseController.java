@@ -32,6 +32,8 @@ public class DatabaseController extends BaseController {
 		String action = getActionParameter(request);
 		if(WebConstants.DO_SAVE_DATABASE.equals(action)) {
 			doSaveDatabase(request, response);
+		} else if (WebConstants.DO_DELETE_DATABASE.equals(action)) {
+			doDeleteDatabase(request, response);
 		}
 	}
 
@@ -57,6 +59,14 @@ public class DatabaseController extends BaseController {
 		DatabaseVO databaseVO = new DatabaseVO();
 		databaseVO.setDatabase(database);
 		databaseVO = databaseManager.saveDatabase(databaseVO);
+		printJSONResponse(response, databaseVO);
+	}
+	
+	private void doDeleteDatabase(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		long[] ids = getLongArrayParameter(request, "ids");
+		DatabaseVO databaseVO = new DatabaseVO();
+		databaseVO.setIds(ids);
+		databaseVO = databaseManager.deleteDatabase(databaseVO);
 		printJSONResponse(response, databaseVO);
 	}
 

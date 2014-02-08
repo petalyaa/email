@@ -8,4 +8,6 @@ public interface DatabaseManager {
 	
 	public DatabaseVO saveDatabase(DatabaseVO databaseVO);
 
+	public DatabaseVO deleteDatabase(DatabaseVO databaseVO);
+	
 }

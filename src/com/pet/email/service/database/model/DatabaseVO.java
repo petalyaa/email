@@ -11,6 +11,8 @@ public class DatabaseVO extends BaseVO {
 	private List<Database> databaseList;
 	
 	private Database database;
+	
+	private long[] ids;
 
 	public List<Database> getDatabaseList() {
 		return databaseList;
@@ -26,6 +28,14 @@ public class DatabaseVO extends BaseVO {
 
 	public void setDatabase(Database database) {
 		this.database = database;
+	}
+
+	public long[] getIds() {
+		return ids;
+	}
+
+	public void setIds(long[] ids) {
+		this.ids = ids;
 	}
 
 }

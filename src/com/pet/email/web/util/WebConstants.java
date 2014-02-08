@@ -18,6 +18,12 @@ public class WebConstants {
 	
 	public static final String DO_SAVE_DATABASE = "doSaveDatabase";
 	
+	public static final String DO_DELETE_DATABASE = "doDeleteDatabase";
+	
+	public String getDO_DELETE_DATABASE() {
+		return DO_DELETE_DATABASE;
+	}
+	
 	public String getDO_SAVE_DATABASE() {
 		return DO_SAVE_DATABASE;
 	}

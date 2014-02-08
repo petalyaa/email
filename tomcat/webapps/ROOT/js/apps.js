@@ -26,6 +26,17 @@ Apps.prototype.hideLoadingWindow = function() {
 	// TODO : Hide loading window
 };
 
+Apps.prototype.shortened = function(str, length) {
+	if(typeof length == 'undefined') {
+		length = 20;
+	}
+	if(length == 0)
+		length = str.length - 1;
+	if(str.length > length)
+		str = str.substring(0, length) + "...";
+	return str;
+};
+
 Apps.prototype.ajaxCall = function(config) {
 	var parent = this;
 	var async = true;

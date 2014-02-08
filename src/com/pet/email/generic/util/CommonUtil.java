@@ -12,6 +12,15 @@ public class CommonUtil {
 		return i;
 	}
 	
+	public static final long toLong(String s) {
+		long l = 0;
+		try {
+			l = Long.parseLong(s.trim());
+		} catch (Exception e) {
+		}
+		return l;
+	}
+	
 	public static final int toInt(boolean b) {
 		if(b)
 			return 1;
@@ -29,4 +38,12 @@ public class CommonUtil {
 		return false;
 	}
 
+	public static final long[] toLongArray(String[] s) {
+		long[] l = new long[s.length];
+		for(int i = 0;i < s.length; i++) {
+			l[i] = toLong(s[i]);
+		}
+		return l;
+	}
+	
 }
